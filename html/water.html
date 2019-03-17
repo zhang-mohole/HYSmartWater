@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/water.css"/>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">loading...</h1>
+			<div class="nav-refresh mui-pull-right">
+				<span class="logout"><img src="../images/icons/refresh.svg" height="20px" width="20px"/></span>
+			</div>
+		</header>
+		
+		<div class="mui-content">
+			<div id="time-title">当前参数时间：</div>
+			<div id="content">
+				<div class="mui-row item-header">
+				    <div class="mui-col-xs-5">参数名</div>
+				    <div class="mui-col-xs-4">当前值</div>
+				    <div class="mui-col-xs-3">状态</div>
+				</div>
+			</div>	
+			
+		</div>
+		
+		<div id="middlePopover" class="mui-popover">
+				<div class="mui-popover-arrow"></div>
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<!--<ul id="state-ul" class="mui-table-view">-->
+						<ul id="state-ul" class="mui-table-view">
+							<!--<li id="popover-paraname" class="mui-table-view-cell">
+								参数名
+							</li>
+							<li id="popover-now-value" class="popover-li">
+								当前值
+							</li>
+							<li id="popover-state" class="popover-li">
+								当前状态
+							</li>
+							<li id="popover-notification" class="popover-li">
+								提示信息
+							</li>
+							<li id="popover-alarm-state" class="popover-li">
+								报警解除状态
+							</li>
+							<li id="popover-tips" class="popover-li">
+								应对方法
+							</li>-->
+						</ul>
+					</div>
+				</div>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item jump1">
+				<span class="mui-icon iconfont icon-shuiweichuanganqi"></span>
+				<span class="mui-tab-label">水质监控及自动加药</span>
+			</a>
+			<!--<a class="mui-tab-item jump1">
+				<span class="mui-icon iconfont icon-bg-colors"></span>
+				<span class="mui-tab-label">药剂投加</span>
+			</a>-->
+			<a class="mui-tab-item jump2">
+				<span class="mui-icon iconfont icon-huodongyouxian"></span>
+				<span class="mui-tab-label">监测换热器</span>
+			</a>
+		</nav>
+			
+	</body>
+
+</html>
+<script src="../js/mui.min.js"></script>
+<script src="../js/water.js"></script>

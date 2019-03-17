@@ -1,0 +1,106 @@
+.nav-refresh {
+	height: 20px;
+	width: 20px;
+	margin-top: 12px;
+}
+
+.mui-bar-nav {
+	background-color: #007AFF;
+}
+
+.mui-title {
+	color: #FFFFFF;
+}
+
+.mui-pull-left {
+	color: #FFFFFF;
+}
+
+.item-header {
+	
+	height: 40px;
+	background-color: #AAAAAA;
+	border: solid 1px;
+}
+
+.mui-col-xs-5 {
+	padding: 9px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.mui-col-xs-4 {
+	padding: 9px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.mui-col-xs-3 {
+	padding: 9px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.item-body {
+	border: solid 1px gray;
+}
+
+.item-left {
+	font-size:small;
+}
+
+.item-middle {
+	font-size: small;
+}
+
+.mui-popover {
+	/* border: solid red 1px; */
+	height: 230px;
+	width: 240px;
+	background-color: white;
+	/*display: none;*/
+}
+.mui-scroll{
+	
+}
+.mui-scroll-wrapper{
+	/*padding: 0px;
+	margin: 0px;*/
+	max-height: 230px;
+	/* border: solid green 1px; */
+}
+.mui-table-view{
+	/*height: 230px !important;
+	width: 240px !important;*/
+	/* border: solid greenyellow 1px; */
+	margin: 0px !important;
+	height: 100%;
+	/* background-color: white; */
+}
+.mui-table-view-cell{
+	width: 240px;
+	background-color: white;
+	padding-top:8px ;
+	padding-bottom: 8px;
+	background-color: white;
+	font-size: small;
+}
+
+.popover-li{
+	width: 240px;
+	padding-top:8px ;
+	padding-bottom: 8px;
+	background-color: white;
+	font-size: small;
+	list-style-type: none;
+}
+#time-title{
+	font-size: medium;
+	color: #555555;
+	margin: 5px;
+}
+.mui-content {
+	margin-left: 2%;
+	margin-right: 2%;
+	padding-bottom: 50px;
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/home.css"/>
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">化学水-循环水场</h1>
+			<!--<div class="nav-poweroff mui-pull-right">
+				<span class="logout"><img src="../images/icons/close.svg" height="20px" width="20px"/></span>
+			</div>-->
+		</header>
+		<div class="mui-content">
+			<div class="home-outline">
+				<!--<h3>化学水-循环水场</h3>-->
+			</div>
+			
+			<div class="jump-img jump1">
+				<h4 align="center">水质监控及自动加药</h4>
+				<div class="jump-img1"></div>
+				<p class="img-description">
+					特点：设备高度集成，体积小，配有高精度分析仪。
+				</p>
+			</div>
+			<div class="jump-img jump2">
+				<h4 align="center">监测换热器</h4>
+				<div class="jump-img2"></div>
+				<p class="img-description">
+					特点：在线监测腐蚀速率、污垢热阻和生物黏泥，实时监控水处理效果。
+				</p>
+			</div>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item jump1">
+				<span class="mui-icon iconfont icon-shuiweichuanganqi"></span>
+				<span class="mui-tab-label">水质监控及自动加药</span>
+			</a>
+			
+			<a class="mui-tab-item jump2">
+				<span class="mui-icon iconfont icon-huodongyouxian"></span>
+				<span class="mui-tab-label">监测换热器</span>
+			</a>
+		</nav>
+	</body>
+
+</html>
+<script type="text/javascript">
+	mui(document.body).on('tap', '.jump1', function(e) {	  
+		request_itempage_data('jump1');
+	});
+	mui(document.body).on('tap', '.jump2', function(e) {
+	   	request_itempage_data('jump2');
+	});
+	
+//	mui(document.body).on('tap', '.nav-poweroff', function(e) {
+//	   	mui.openWindow({
+//  		url:'../login.html'})
+//	});
+	
+</script>
+<!--引入请求water页数据的函数文件-->
+<script src="../js/request_itempage_data.js"></script>

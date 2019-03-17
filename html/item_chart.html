@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/item_chart.css"/>
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a id="back-btn" class=" mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">loading...</h1>
+		</header>
+		<div id="content" class="mui-content">
+			<div class="time-piker-title">起始时间：</div>
+			<div class="time-piker-title">结束时间：</div>
+			<button id='time-begin' class="btn mui-btn mui-btn-block time-piker">开始</button>
+			<button id='time-end' data-options='{"value":"2018-10-04 10:10"}' class="btn mui-btn mui-btn-block time-piker">结束</button>
+			<button id="time-conform" type="button" class="mui-btn mui-btn-primary time-conform">确定</button>
+			<!--<div id='result1' class="ui-alert"></div>
+			<div id='result2' class="ui-alert"></div>-->
+			
+			<div id="chart-header" class="chart-header">
+				<div id="chart-btn" class="chart-btn">历史数据图</div>
+				<div id="table-btn" class="table-btn">历史数据表</div>	
+			</div>
+			<div id="table-title" class="table-title">历史数据表</div>
+			<div id="table-div">
+				<table id="table" border="1">
+					<tr>
+						<th>时间</th>
+						<th>参数值<span id="para-unit" style="font-size: x-small;">(单位)</span></th>
+					</tr>
+					
+				</table>
+				
+				<div class="mui-content-padded" align="center">
+					<ul id="ul-pagination" class="mui-pagination mui-pagination-sm">
+						
+					</ul>
+				</div>
+			</div>
+			
+			
+			<div id="line-chart" class="line-chart"></div>
+				
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item jump1">
+				<span class="mui-icon iconfont icon-shuiweichuanganqi"></span>
+				<span class="mui-tab-label">水质监控及自动加药</span>
+			</a>
+			<!--<a class="mui-tab-item jump1">
+				<span class="mui-icon iconfont icon-bg-colors"></span>
+				<span class="mui-tab-label">药剂投加</span>
+			</a>-->
+			<a class="mui-tab-item jump2">
+				<span class="mui-icon iconfont icon-huodongyouxian"></span>
+				<span class="mui-tab-label">监测换热器</span>
+			</a>
+		</nav>
+			
+	</body>
+
+</html>
+<!--
+	作者：offline
+	时间：2018-08-25
+	描述：use echarts
+	<script src="../js/basic_line_chart.js" type="text/javascript" charset="utf-8"></script>
+-->
+<script src="../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+
+<!--
+	作者：zmh
+	时间：2018-08-25
+	描述：use time picker
+-->
+<script src="../js/mui.picker.min.js"></script>
+<script src="../js/item_chart_controller.js"></script>
+<!--
+	作者：zmh
+	时间：2018-09-08
+	描述：分页功能控制
+-->
+<script>
+	(function($) {
+		$('.mui-pagination').on('tap', 'a', function() {
+			var para_num = data.length;
+			var page_num = Math.ceil(para_num/15);
+			var li = this.parentNode;
+			var classList = li.classList;
+			if(!classList.contains('mui-active') && !classList.contains('mui-disabled')) {
+				var active = li.parentNode.querySelector('.mui-active');
+				if(classList.contains('mui-previous')) { //previous
+					if(active) {
+						var previous = active.previousElementSibling;
+						console.log('previous', previous);
+						if(previous && !previous.classList.contains('mui-previous')) {
+							$.trigger(previous.querySelector('a'), 'tap');
+						} else {
+							classList.add('mui-disabled');
+						}
+					}
+				} else if(classList.contains('mui-next')) { //next
+					if(active) {
+						var next = active.nextElementSibling;
+						if(next && !next.classList.contains('mui-next')) {
+							$.trigger(next.querySelector('a'), 'tap');
+						} else {
+							classList.add('mui-disabled');
+						}
+					}
+				} else { //page
+					active.classList.remove('mui-active');
+					classList.add('mui-active');
+					var page = parseInt(this.innerText);
+					var previousPageElement = li.parentNode.querySelector('.mui-previous');
+					var nextPageElement = li.parentNode.querySelector('.mui-next');
+					previousPageElement.classList.remove('mui-disabled');
+					nextPageElement.classList.remove('mui-disabled');
+					//加载选中页
+					load_subTable(page);
+					if(page <= 1) {
+						previousPageElement.classList.add('mui-disabled');
+					} else if(page >= page_num) {
+						nextPageElement.classList.add('mui-disabled');
+					}
+				}
+			}
+		});
+	})(mui);
+	
+	var load_subTable = function(page_num){
+		//动态挂载表格
+		var tr;
+		var td;
+		var table = document.getElementById('table');
+		var tr_num = table.getElementsByTagName('tr').length;
+		var children = table.childNodes;
+		if(tr_num > 1){
+			for(var i = tr_num; i > 1; i--){
+				table.removeChild(children[i]);
+			}
+		}
+		var number_of_per_page = 15;//表格每页显示条目数
+		if(data.length > 50){
+			number_of_per_page = 20;
+		}
+		var first_index = number_of_per_page * (page_num - 1);
+		var last_index = first_index + number_of_per_page-1;
+//		var first_index = 15 * (page_num - 1);
+//		var last_index = first_index + 14;
+		if(last_index > data.length-1){
+			last_index = data.length-1;
+		}
+		var state_num = -1;
+		for(var i = first_index; i <= last_index; ++i) {
+			tr = document.createElement('tr');
+			table.appendChild(tr);
+			//时间
+			td = document.createElement('td');
+			td.setAttribute('class','td-time');
+			td.innerHTML = data[i].date + ' ' + data[i].time.substring(0,5);
+			tr.appendChild(td);
+			//参数值
+			td = document.createElement('td');
+			td.setAttribute('class','td-value');
+			td.innerHTML = data[i].value;
+			tr.appendChild(td);
+			
+		}
+	}
+	
+	mui(document.body).on('tap', '#back-btn', function(e) {
+		//设备参数编号
+		var page_para = [[7,8,9,10,11,12,13,14,17,18,19,23,24,25,26,27,28,29,30,31,32,33],
+						 [1,2,3,4,5,6,20,21,22]];
+		//title_no 在引入文件item_chart_controller中定义为全局变量
+		var back_target = '';
+		if(page_para[0].indexOf(title_no) > -1){//当前页参数为水质监控及自动加药页面中的一个
+			back_target = 'jump1';
+		}else{
+			back_target = 'jump2';
+		}
+	   	request_itempage_data(back_target);
+	});
+</script>
+<!--引入请求water页数据函数文件-->
+<script src="../js/request_itempage_data.js"></script>
+<script src="../js/bottom_tab_bar.js"></script>
+<script src="../js/data_state_info.js"></script>

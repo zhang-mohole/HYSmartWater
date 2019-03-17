@@ -1,0 +1,106 @@
+.mui-bar-nav {
+	background-color: #007AFF;
+}
+
+.mui-title {
+	color: #FFFFFF;
+}
+
+.mui-pull-left {
+	color: #FFFFFF;
+}
+
+.time-piker-title {
+	width: 40%;
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+	font-size: small;
+	color: gray;
+	text-align: center;
+}
+
+.time-piker {
+	height: 30px;
+	width: 40%;
+	float: left;
+	padding: 3px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	font-size: small;
+}
+
+.time-conform {
+	height: 29px;
+	width: 15%;
+	float: left;
+	text-align: center;
+	padding: 0px;
+	margin-left: 3px;
+}
+
+.chart-header {
+	width: 100%;
+	float: left;
+}
+
+#chart-btn {
+	height: 35px;
+	width: 50%;
+	text-align: center;
+	padding-top: 7px;
+	float: left;
+	background-color: #007AFF;
+	color: #FFFFFF;
+}
+
+#table-btn {
+	height: 35px;
+	width: 50%;
+	text-align: center;
+	padding-top: 7px;
+	float: left;
+	background-color: #AAAAAA;
+	color: #FFFFFF;
+}
+
+.line-chart {
+	width: 100%;
+	height: 300px;
+	float: left;
+}
+
+.table-title {
+	width: 100%;
+	height: 35px;
+	text-align: center;
+	padding-top: 7px;
+	float: left;
+	background-color: #AAAAAA;
+	color: #FFFFFF;
+}
+
+table {
+	width: 100%;
+}
+table tr{
+	height: 30px;
+}
+
+/*table td {
+	width: 33.3%;
+	text-align: center;
+}*/
+.td-time{
+	width: 65%;
+	text-align: center;
+}
+.td-value{
+	width: 35%;
+	text-align: center;
+}
+.mui-content {
+	margin-left: 2%;
+	margin-right: 2%;
+	padding-bottom: 50px;
+}

@@ -1,0 +1,64 @@
+.nav-poweroff {
+	height: 45px;
+	/*width: 20px;*/
+	margin-top: 12px;
+}
+
+.mui-bar-nav {
+	background-color: #007AFF;
+}
+.logout{
+	font-size:small;
+	color: white;
+}
+
+.mui-title {
+	color: #FFFFFF;
+}
+.mui-pull-left {
+	color: #FFFFFF;
+}
+
+.sinopec-logo{
+	height: 80px;
+	width: 100%;
+	background-image: url(../images/sinopec.png);
+	background-size: 100% 100%;
+	float: left;
+}
+p{
+	margin: 10px;
+	color: blue;
+}
+
+.sinopec-img{
+	height: 180px;
+	width: 100%;
+	background-image: url(../images/sinopec_img.png);
+	background-size: 100% 100%;
+	float: left;
+}
+
+.name-jump{
+	width: 100%;
+	align-content: center;
+	margin-top: 10px;
+	float: left;
+}
+.jumpbutton{
+ text-align: center;
+ height: 100%;
+ margin: 0px;
+ width: 100%;
+ float: left;
+}
+
+h3{
+	text-align: center;
+	color: #DD524D;
+}
+
+.mui-content {
+	margin-left: 2%;
+	margin-right: 2%;
+}
